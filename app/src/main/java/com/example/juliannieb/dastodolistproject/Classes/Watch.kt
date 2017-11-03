@@ -62,5 +62,12 @@ class Watch {
             }
         }
     }
-    
+
+    override fun toString(): String {
+        val hourString = if (this.hour >= 10) "${this.hour}" else "0${this.hour}"
+        val minuteString = if (this.minute >= 10) "${this.minute}" else "0${this.minute}"
+        val secondString = if (this.second >= 10) "${this.second}" else "0${this.second}"
+        return "${hourString}:${minuteString}:${secondString}"
+    }
+
 }
