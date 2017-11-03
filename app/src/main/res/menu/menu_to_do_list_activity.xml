@@ -3,10 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_favorite"
+    android:id="@+id/action_favorite"
+    android:orderInCategory="300"
+    android:title="User"
+    android:icon="@drawable/icon_add"
+    app:showAsAction="always"></item>
+
+    <item
+        android:id="@+id/action_stop_watch"
         android:orderInCategory="300"
         android:title="User"
-        android:icon="@drawable/icon_add"
+        android:icon="@drawable/icon_stop_watch"
+        app:showAsAction="always"></item>
+
+    <item
+        android:id="@+id/action_timer"
+        android:orderInCategory="300"
+        android:title="User"
+        android:icon="@drawable/icon_timer"
         app:showAsAction="always"></item>
 
 </menu>
