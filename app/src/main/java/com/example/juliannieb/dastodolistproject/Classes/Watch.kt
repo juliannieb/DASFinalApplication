@@ -39,7 +39,7 @@ class Watch {
             return
         }
         this.second--
-        if (this.second == 0) {
+        if (this.second == -1) {
             if (this.minute > 0 || this.hour > 0) {
                 this.second = 59
             }

@@ -11,7 +11,7 @@ class ToDoListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_to_do_list)
         setToolbar()
-        val watch = Watch(0, 0, 0)
+        val watch = Watch(0, 59, 0)
         println(watch)
         watch.tickForwards()
         println(watch)
