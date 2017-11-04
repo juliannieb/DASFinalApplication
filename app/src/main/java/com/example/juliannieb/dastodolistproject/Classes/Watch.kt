@@ -6,23 +6,9 @@ package com.example.juliannieb.dastodolistproject.Classes
 
 class Watch {
 
-    var hour : Int
-        get() = this.hour
-        set(hour) {
-            this.hour = hour
-        }
-
-    var minute : Int
-        get() = this.minute
-        set(minute) {
-            this.minute = minute
-        }
-
-    var second : Int
-        get() = this.second
-        set(second) {
-            this.second = second
-        }
+    var hour : Int = 0
+    var minute : Int = 0
+    var second : Int = 0
 
     constructor() {
         this.hour = 0
@@ -54,11 +40,17 @@ class Watch {
         }
         this.second--
         if (this.second == 0) {
-            this.second = 59
-            this.minute--
+            if (this.minute > 0 || this.hour > 0) {
+                this.second = 59
+            }
+            if (this.minute > 0) {
+                this.minute--
+            }
             if (this.minute == 0) {
-                this.minute = 59
-                this.hour--
+                if (this.hour > 0) {
+                    this.minute = 59
+                    this.hour--
+                }
             }
         }
     }

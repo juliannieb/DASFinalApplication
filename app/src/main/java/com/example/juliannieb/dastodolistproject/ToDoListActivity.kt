@@ -3,6 +3,7 @@ package com.example.juliannieb.dastodolistproject
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import com.example.juliannieb.dastodolistproject.Classes.Watch
 
 class ToDoListActivity : AppCompatActivity() {
 
@@ -10,6 +11,18 @@ class ToDoListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_to_do_list)
         setToolbar()
+        val watch = Watch(0, 0, 0)
+        println(watch)
+        watch.tickForwards()
+        println(watch)
+        watch.tickForwards()
+        println(watch)
+        watch.tickBackwards()
+        println(watch)
+        watch.tickBackwards()
+        println(watch)
+        watch.tickBackwards()
+        println(watch)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
