@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StopWatchActivity"></activity>
+        <activity android:name=".StopWatchActivity" />
+        <activity android:name=".Classes.TimerActivity"></activity>
     </application>
 
 </manifest>
