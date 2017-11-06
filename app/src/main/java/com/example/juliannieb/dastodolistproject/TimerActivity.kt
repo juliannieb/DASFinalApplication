@@ -1,4 +1,4 @@
-package com.example.juliannieb.dastodolistproject.Classes
+package com.example.juliannieb.dastodolistproject
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

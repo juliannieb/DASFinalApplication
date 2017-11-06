@@ -1,12 +1,10 @@
 package com.example.juliannieb.dastodolistproject
 
-import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import com.example.juliannieb.dastodolistproject.Classes.TimerActivity
 
 class ToDoListActivity : AppCompatActivity() {
 
