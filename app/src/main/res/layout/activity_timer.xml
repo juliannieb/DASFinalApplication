@@ -19,6 +19,7 @@
             android:layout_marginRight="40dp">
 
             <EditText
+                android:id="@+id/editTxtHours"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -33,6 +34,7 @@
                 android:gravity="center"/>
 
             <EditText
+                android:id="@+id/editTxtMinutes"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -47,6 +49,7 @@
                 android:gravity="center"/>
 
             <EditText
+                android:id="@+id/editTxtSeconds"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -71,18 +74,21 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btnStart"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="START"/>
 
             <Button
+                android:id="@+id/btnPause"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="PAUSE"/>
 
             <Button
+                android:id="@+id/btnStop"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

@@ -22,6 +22,12 @@ open class Watch {
         this.second = second
     }
 
+    fun setWatch(hour: Int, minute: Int, second: Int) {
+        this.hour = hour
+        this.minute = minute
+        this.second = second
+    }
+
     fun tickForwards() {
         this.second++
         if (this.second == 60) {
