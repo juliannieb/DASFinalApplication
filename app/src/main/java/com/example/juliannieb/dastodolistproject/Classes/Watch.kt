@@ -4,7 +4,7 @@ package com.example.juliannieb.dastodolistproject.Classes
  * Created by juliannieb on 11/3/17.
  */
 
-class Watch {
+open class Watch {
 
     var hour : Int = 0
     var minute : Int = 0
