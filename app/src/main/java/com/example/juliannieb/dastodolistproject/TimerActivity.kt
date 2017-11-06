@@ -7,9 +7,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.example.juliannieb.dastodolistproject.Classes.Timer
-import com.example.juliannieb.dastodolistproject.R
 
 class TimerActivity : AppCompatActivity() {
 
