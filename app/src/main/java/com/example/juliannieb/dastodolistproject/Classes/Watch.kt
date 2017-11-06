@@ -6,17 +6,20 @@ package com.example.juliannieb.dastodolistproject.Classes
 
 open class Watch {
 
+    var ticking: Boolean = false
     var hour : Int = 0
     var minute : Int = 0
     var second : Int = 0
 
     constructor() {
+        this.ticking = false
         this.hour = 0
         this.minute = 0
         this.second = 0
     }
 
     constructor(hour : Int, minute : Int, second : Int) {
+        this.ticking = false
         this.hour = hour
         this.minute = minute
         this.second = second
@@ -59,6 +62,28 @@ open class Watch {
                 }
             }
         }
+    }
+
+    fun <T> start(callback: () -> T) {
+        if (!this.ticking) {
+            this.ticking = true
+            tick(callback)
+        }
+    }
+
+    open fun <T> tick(callback: () -> T) {
+        tickForwards()
+        callback()
+    }
+
+    fun pause() {
+        this.ticking = false
+    }
+
+    fun <T> stop(callback: () -> T) {
+        pause()
+        setWatch(0, 0, 0)
+        callback()
     }
 
     override fun toString(): String {

@@ -3,10 +3,10 @@ package com.example.juliannieb.dastodolistproject.Classes
 import android.os.Handler
 
 /**
- * Created by juliannieb on 11/5/17.
+ * Created by juliannieb on 11/6/17.
  */
 
-class Timer: Watch {
+class StopWatch: Watch {
 
     constructor() : super()
 
@@ -19,12 +19,11 @@ class Timer: Watch {
             stop(callback)
         }
         if (this.ticking) {
-            this.tickBackwards()
+            this.tickForwards()
             val handler = Handler()
             handler.postDelayed(Runnable {
                 this.tick(callback)
             }, 1000)
         }
     }
-
 }
