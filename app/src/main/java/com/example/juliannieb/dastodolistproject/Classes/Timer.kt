@@ -19,14 +19,16 @@ class Timer: Watch {
     }
 
     fun <T> start(callback: () -> T) {
-        this.ticking = true
-        tick(callback)
+        if (!this.ticking) {
+            this.ticking = true
+            tick(callback)
+        }
     }
 
     fun <T> tick(callback: () -> T) {
         callback()
         if (this.hour == 0 && this.minute == 0 && this.second == 0) {
-            stop()
+            stop(callback)
         }
         if (this.ticking) {
             this.tickBackwards()
@@ -37,7 +39,13 @@ class Timer: Watch {
         }
     }
 
-    fun stop() {
+    fun pause() {
         this.ticking = false
+    }
+
+    fun <T> stop(callback: () -> T) {
+        pause()
+        setWatch(0, 0, 0)
+        callback()
     }
 }

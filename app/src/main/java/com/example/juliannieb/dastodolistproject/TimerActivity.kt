@@ -32,7 +32,7 @@ class TimerActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        timer.stop()
+        timer.stop {  }
     }
 
     fun getLayoutElements() {
@@ -49,27 +49,38 @@ class TimerActivity : AppCompatActivity() {
         this.btnStart!!.setOnClickListener(View.OnClickListener {
             startTimer()
         })
+        this.btnPause!!.setOnClickListener(View.OnClickListener {
+            this.timer.pause()
+        })
+        this.btnStop!!.setOnClickListener(View.OnClickListener {
+            this.timer.stop { this.txtViewTimer!!.text = timer.toString() }
+        })
     }
 
     fun startTimer() {
-        var hours = 0
-        var minutes = 0
-        var seconds = 0
-        val hoursString = this.editTxtHours!!.text.toString()
-        val minutesString = this.editTxtMinutes!!.text.toString()
-        val secondsString = this.editTxtSeconds!!.text.toString()
-        if (hoursString == null || hoursString.equals("") ||
-                minutesString == null || minutesString.equals("") ||
-                secondsString == null || secondsString.equals("")) {
-            showSimpleAlert("Warning", "Please provide valid inputs", "OK")
-            return
+        if (this.timer.hour != 0 || this.timer.minute != 0 || this.timer.second != 0) {
+            timer.start { this.txtViewTimer!!.text = timer.toString() }
         }
-        hours = hoursString.toInt()
-        minutes = minutesString.toInt()
-        seconds = secondsString.toInt()
+        else {
+            var hours = 0
+            var minutes = 0
+            var seconds = 0
+            val hoursString = this.editTxtHours!!.text.toString()
+            val minutesString = this.editTxtMinutes!!.text.toString()
+            val secondsString = this.editTxtSeconds!!.text.toString()
+            if (hoursString == null || hoursString.equals("") ||
+                    minutesString == null || minutesString.equals("") ||
+                    secondsString == null || secondsString.equals("")) {
+                showSimpleAlert("Warning", "Please provide valid inputs", "OK")
+                return
+            }
+            hours = hoursString.toInt()
+            minutes = minutesString.toInt()
+            seconds = secondsString.toInt()
 
-        timer.setWatch(hours, minutes, seconds)
-        timer.start { this.txtViewTimer!!.text = timer.toString() }
+            timer.setWatch(hours, minutes, seconds)
+            timer.start { this.txtViewTimer!!.text = timer.toString() }
+        }
     }
 
     fun showSimpleAlert(title: String, message: String, buttonText: String) {
