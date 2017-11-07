@@ -14,9 +14,9 @@ class StopWatch: Watch {
 
 
     override fun <T> tick(callback: () -> T) {
-        callback()
         if (this.ticking) {
             this.tickForwards()
+            callback()
             val handler = Handler()
             handler.postDelayed(Runnable {
                 this.tick(callback)

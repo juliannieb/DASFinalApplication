@@ -14,11 +14,11 @@ class Timer: Watch {
 
 
     override fun <T> tick(callback: () -> T) {
-        callback()
         if (this.hour == 0 && this.minute == 0 && this.second == 0) {
             stop(callback)
         }
         if (this.ticking) {
+            callback()
             this.tickBackwards()
             val handler = Handler()
             handler.postDelayed(Runnable {
