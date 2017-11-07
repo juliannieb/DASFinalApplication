@@ -26,6 +26,11 @@ class ToDoListActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+            R.id.action_stop_watch -> {
+                val intent = Intent(this, StopWatchActivity::class.java)
+                startActivity(intent)
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
