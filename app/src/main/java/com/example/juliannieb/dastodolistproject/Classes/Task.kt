@@ -51,6 +51,28 @@ class Task {
         this.timeWorkedOn = taskFactory.timeWorkedOn
     }
 
+    constructor(dataTask: DataTask) {
+        this.id = dataTask.id
+        this.title = dataTask.title
+        this.description = dataTask.description
+        this.priority = dataTask.priority
+        this.intervalTime = dataTask.intervalTime
+        this.timeWorkedOn = dataTask.timeWorkedOn
+    }
+
+    fun saveMemento(): DataTask {
+        return DataTask(this.id, this.title, this.description, this.priority, this.intervalTime, this.timeWorkedOn)
+    }
+
+    fun restoreFromMemento(dataTask: DataTask) {
+        this.id = dataTask.id
+        this.title = dataTask.title
+        this.description = dataTask.description
+        this.priority = dataTask.priority
+        this.intervalTime = dataTask.intervalTime
+        this.timeWorkedOn = dataTask.timeWorkedOn
+    }
+
     override fun toString(): String {
         return "${this.id} - ${this.title} - ${this.priority}"
     }
