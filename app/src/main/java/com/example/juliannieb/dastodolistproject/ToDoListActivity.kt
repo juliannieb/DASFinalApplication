@@ -5,14 +5,18 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ListView
 
 class ToDoListActivity : AppCompatActivity() {
 
+    var listViewTasks: ListView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_to_do_list)
         setToolbar()
+        getLayoutElements()
+        setLayoutElements()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -38,5 +42,17 @@ class ToDoListActivity : AppCompatActivity() {
 
     fun setToolbar() {
         supportActionBar!!.title = resources.getString(R.string.app_name)
+    }
+
+    fun getLayoutElements() {
+        listViewTasks = findViewById<ListView>(R.id.listViewTasks)
+    }
+
+    fun setLayoutElements() {
+        setTasksLists()
+    }
+
+    fun setTasksLists() {
+
     }
 }
