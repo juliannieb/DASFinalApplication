@@ -18,4 +18,13 @@ class Task {
     var timeWorkedOn: Long = 0
     //TODO: add state
 
+    constructor(id: Long, title: String, description: String, priority: Priority,
+                intervalTime: Long, timeWorkedOn: Long) {
+        this.id = id
+        this.description = description
+        this.priority = priority
+        this.intervalTime = intervalTime
+        this.timeWorkedOn = timeWorkedOn
+    }
+
 }
