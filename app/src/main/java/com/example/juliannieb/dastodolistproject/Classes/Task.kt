@@ -1,5 +1,7 @@
 package com.example.juliannieb.dastodolistproject.Classes
 
+import java.io.Serializable
+
 /**
  * Created by juliannieb on 11/7/17.
  */
@@ -7,6 +9,9 @@ package com.example.juliannieb.dastodolistproject.Classes
 enum class Priority {
     HIGH, MEDIUM, LOW
 }
+
+data class DataTask(val id: Long, val title: String, val description: String, val priority: Priority,
+                    val intervalTime: Long, val timeWorkedOn: Long) : Serializable
 
 class Task {
 
@@ -21,6 +26,7 @@ class Task {
     constructor(id: Long, title: String, description: String, priority: Priority,
                 intervalTime: Long, timeWorkedOn: Long) {
         this.id = id
+        this.title = title
         this.description = description
         this.priority = priority
         this.intervalTime = intervalTime

@@ -8,6 +8,7 @@ import android.view.MenuItem
 
 class ToDoListActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_to_do_list)
@@ -21,13 +22,13 @@ class ToDoListActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
-            R.id.action_timer -> {
-                val intent = Intent(this, TimerActivity::class.java)
+            R.id.action_stop_watch -> {
+                val intent = Intent(this, StopWatchActivity::class.java)
                 startActivity(intent)
                 return true
             }
-            R.id.action_stop_watch -> {
-                val intent = Intent(this, StopWatchActivity::class.java)
+            R.id.action_timer -> {
+                val intent = Intent(this, TimerActivity::class.java)
                 startActivity(intent)
                 return true
             }
