@@ -23,6 +23,15 @@ class Task {
     var timeWorkedOn: Long = 0
     //TODO: add state
 
+    constructor() {
+        id = 0
+        title = ""
+        description = ""
+        priority = Priority.LOW
+        intervalTime = 0
+        timeWorkedOn = 0
+    }
+
     constructor(id: Long, title: String, description: String, priority: Priority,
                 intervalTime: Long, timeWorkedOn: Long) {
         this.id = id
@@ -33,8 +42,17 @@ class Task {
         this.timeWorkedOn = timeWorkedOn
     }
 
+    constructor(taskFactory: TaskFactory) {
+        this.id = taskFactory.id
+        this.title = taskFactory.title
+        this.description = taskFactory.description
+        this.priority = taskFactory.priority
+        this.intervalTime = taskFactory.intervalTime
+        this.timeWorkedOn = taskFactory.timeWorkedOn
+    }
+
     override fun toString(): String {
-        return "${this.title} - ${this.priority}"
+        return "${this.id} - ${this.title} - ${this.priority}"
     }
 
 }
