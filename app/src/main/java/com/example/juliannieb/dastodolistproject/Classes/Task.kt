@@ -33,4 +33,8 @@ class Task {
         this.timeWorkedOn = timeWorkedOn
     }
 
+    override fun toString(): String {
+        return "${this.title} - ${this.priority}"
+    }
+
 }

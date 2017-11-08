@@ -9,7 +9,7 @@ import com.example.juliannieb.dastodolistproject.Classes.ToDoList
 class StrategyPriority: StrategyToDoList {
 
     override fun sortTasks() {
-        ToDoList.instance.tasks.sortedWith(compareBy({it.priority}))
+        ToDoList.instance.tasks.sortWith(compareBy({it.priority}))
     }
 
 }

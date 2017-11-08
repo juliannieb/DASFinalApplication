@@ -23,6 +23,10 @@ class ToDoList {
         val instance: ToDoList by lazy { Holder.INSTANCE }
     }
 
+    fun addTask(task: Task) {
+        this.tasks.add(task)
+    }
+
     fun sortTasks() {
         this.strategyToDoList.sortTasks()
     }

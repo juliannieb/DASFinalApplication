@@ -6,10 +6,10 @@ import com.example.juliannieb.dastodolistproject.Classes.ToDoList
  * Created by juliannieb on 11/7/17.
  */
 
-class StrategySortAlphabetically: StrategyToDoList {
+class StrategyAlphabetically: StrategyToDoList {
 
     override fun sortTasks() {
-        ToDoList.instance.tasks.sortedWith(compareBy({it.title}))
+        ToDoList.instance.tasks.sortWith(compareBy({it.title}))
     }
 
 }
