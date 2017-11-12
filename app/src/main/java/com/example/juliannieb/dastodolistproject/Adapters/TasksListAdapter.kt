@@ -65,10 +65,10 @@ class TasksListAdapter: ArrayAdapter<Task> {
             taskHolder.txtViewTaskTitle!!.text = task.title
         }
         if (task.intervalTime != null) {
-            taskHolder.txtViewTaskInterval!!.text = "${task.intervalTime}"
+            taskHolder.txtViewTaskInterval!!.text = "Interval: ${task.intervalTime}"
         }
         if (task.timeWorkedOn != null) {
-            taskHolder.txtViewTaskTimeWorkedOn!!.text = "${task.timeWorkedOn}"
+            taskHolder.txtViewTaskTimeWorkedOn!!.text = "Total time: ${task.timeWorkedOn}"
         }
         if (task.priority != null) {
             if (task.priority == Priority.HIGH) {
