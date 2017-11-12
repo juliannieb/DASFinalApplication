@@ -7,10 +7,11 @@ import com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity.Stat
 import com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity.StateEdit
 import com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity.StateTaskActivity
 import com.example.juliannieb.dastodolistproject.R
+import com.example.juliannieb.dastodolistproject.Utils
 
 class TaskActivity : AppCompatActivity() {
 
-    var state: StateTaskActivity = StateEdit()
+    var state: StateTaskActivity = StateCreate()
     var task: Task? = null
 
     var btnSave: Button? = null
@@ -20,8 +21,22 @@ class TaskActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task)
+        getIntentExtras()
         getLayoutElements()
         initGUI()
+    }
+
+    fun getIntentExtras() {
+        val bundle = intent.extras
+        if(bundle != null) {
+            val stateTaskActivity = bundle.getInt("StateTaskActivity")
+            if (stateTaskActivity == Utils.StateTaskActivity.STATE_CREATE.ordinal) {
+                this.state = StateCreate()
+            }
+            else if (stateTaskActivity == Utils.StateTaskActivity.STATE_EDIT.ordinal) {
+                this.state = StateEdit()
+            }
+        }
     }
 
     fun getLayoutElements() {
