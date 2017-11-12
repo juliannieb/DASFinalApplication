@@ -14,6 +14,13 @@ class StateCreate: StateTaskActivity {
         taskActivity.btnSave!!.visibility = View.VISIBLE
         taskActivity.btnDelete!!.visibility = View.GONE
         taskActivity.btnStartTimer!!.visibility = View.GONE
+
+        if (task != null) {
+            if (task.title != null) {
+                taskActivity.editTxtTitle!!.setText(task.title)
+            }
+
+        }
     }
 
     override fun saveTask(task: Task) {

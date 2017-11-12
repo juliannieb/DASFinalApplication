@@ -32,6 +32,7 @@ class ToDoListActivity : AppCompatActivity() {
             R.id.action_add_task -> {
                 val intent = Intent(this, TaskActivity::class.java)
                 intent.putExtra("StateTaskActivity", Utils.StateTaskActivity.STATE_CREATE.ordinal)
+                intent.putExtra("task", ToDoList.instance.draft)
                 startActivity(intent)
                 return true
             }

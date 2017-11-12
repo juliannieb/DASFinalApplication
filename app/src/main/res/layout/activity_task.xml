@@ -13,11 +13,13 @@
         android:padding="5dp">
 
         <EditText
+            android:id="@+id/editTxtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Title"/>
 
         <EditText
+            android:id="@+id/editTxtDescription"
             android:inputType="textMultiLine"
             android:lines="8"
             android:minLines="4"
@@ -36,6 +38,7 @@
             android:textSize="17sp"/>
 
         <RadioGroup
+            android:id="@+id/radioGroupPriority"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -63,6 +66,7 @@
         </RadioGroup>
 
         <EditText
+            android:id="@+id/editTxtInterval"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"

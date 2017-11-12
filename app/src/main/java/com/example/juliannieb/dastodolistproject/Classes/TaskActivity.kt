@@ -3,6 +3,8 @@ package com.example.juliannieb.dastodolistproject.Classes
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.RadioGroup
 import com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity.StateCreate
 import com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity.StateEdit
 import com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity.StateTaskActivity
@@ -14,6 +16,10 @@ class TaskActivity : AppCompatActivity() {
     var state: StateTaskActivity = StateCreate()
     var task: Task? = null
 
+    var editTxtTitle: EditText? = null
+    var editTxtDescription: EditText? = null
+    var radioGroupPriority: RadioGroup? = null
+    var editTxtInterval: EditText? = null
     var btnSave: Button? = null
     var btnDelete: Button? = null
     var btnStartTimer: Button? = null
@@ -30,16 +36,30 @@ class TaskActivity : AppCompatActivity() {
         val bundle = intent.extras
         if(bundle != null) {
             val stateTaskActivity = bundle.getInt("StateTaskActivity")
-            if (stateTaskActivity == Utils.StateTaskActivity.STATE_CREATE.ordinal) {
-                this.state = StateCreate()
+            if (stateTaskActivity != null) {
+                if (stateTaskActivity == Utils.StateTaskActivity.STATE_CREATE.ordinal) {
+                    this.state = StateCreate()
+                }
+                else if (stateTaskActivity == Utils.StateTaskActivity.STATE_EDIT.ordinal) {
+                    this.state = StateEdit()
+                }
             }
-            else if (stateTaskActivity == Utils.StateTaskActivity.STATE_EDIT.ordinal) {
-                this.state = StateEdit()
+            if (bundle.getSerializable("task") != null) {
+                val taskSerializable = bundle.getSerializable("task") as DataTask
+                task = Task(taskSerializable)
+            }
+            else {
+                task = TaskFactory().id(0).build()
+                ToDoList.instance.draft = task!!.saveMemento()
             }
         }
     }
 
     fun getLayoutElements() {
+        editTxtTitle = findViewById<EditText>(R.id.editTxtTitle)
+        editTxtDescription = findViewById<EditText>(R.id.editTxtDescription)
+        radioGroupPriority = findViewById<RadioGroup>(R.id.radioGroupPriority)
+        editTxtInterval = findViewById<EditText>(R.id.editTxtInterval)
         btnSave = findViewById<Button>(R.id.btnSave)
         btnDelete = findViewById<Button>(R.id.btnDelete)
         btnStartTimer = findViewById<Button>(R.id.btnStartTimer)
