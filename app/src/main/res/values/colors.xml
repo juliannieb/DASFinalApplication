@@ -7,4 +7,11 @@
     <color name="colorPriorityHigh">#FF0000</color>
     <color name="colorPriorityMedium">#FFC240</color>
     <color name="colorPriorityLow">#36E825</color>
+
+    <color name="btnSave">#37AB35</color>
+    <color name="btnDelete">#AB4A3F</color>
+    <color name="btnStartTimer">#2329AB</color>
+
+    <color name="white">#FFFFFF</color>
+
 </resources>

@@ -69,6 +69,30 @@
             android:hint="Interval time (ms)"
             android:layout_marginTop="5dp"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:background="@color/btnSave"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:background="@color/btnDelete"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Timer"
+            android:background="@color/btnStartTimer"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
