@@ -2,6 +2,7 @@ package com.example.juliannieb.dastodolistproject.Classes
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
@@ -29,6 +30,7 @@ class TaskActivity : AppCompatActivity() {
         setContentView(R.layout.activity_task)
         getIntentExtras()
         getLayoutElements()
+        setLayoutElements()
         initGUI()
     }
 
@@ -65,7 +67,41 @@ class TaskActivity : AppCompatActivity() {
         btnStartTimer = findViewById<Button>(R.id.btnStartTimer)
     }
 
+    fun setLayoutElements() {
+        btnSave!!.setOnClickListener(View.OnClickListener {
+            saveTask()
+            this.finish()
+        })
+    }
+
     fun initGUI() {
         this.state.initGUI(this, task)
+    }
+
+    fun saveTask() {
+        setTask()
+        this.state.saveTask(task!!)
+    }
+
+    fun setTask() {
+        val title = editTxtTitle!!.text.toString()
+        val description = editTxtDescription!!.text.toString()
+        val priorityId = radioGroupPriority!!.checkedRadioButtonId
+        var priority = Priority.LOW
+        if (priorityId == R.id.btnPriorityLow) {
+            priority = Priority.LOW
+        }
+        else if (priorityId == R.id.btnPriorityMedium) {
+            priority = Priority.MEDIUM
+        }
+        else if (priorityId == R.id.btnPriorityHigh) {
+            priority = Priority.HIGH
+        }
+        val interval = editTxtInterval!!.text.toString().toLong()
+
+        task!!.title = title
+        task!!.description = description
+        task!!.priority = priority
+        task!!.intervalTime = interval
     }
 }

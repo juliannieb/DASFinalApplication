@@ -22,6 +22,11 @@ class ToDoListActivity : AppCompatActivity() {
         setLayoutElements()
     }
 
+    override fun onResume() {
+        super.onResume()
+        setTasksLists()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_to_do_list_activity, menu)
         return true
