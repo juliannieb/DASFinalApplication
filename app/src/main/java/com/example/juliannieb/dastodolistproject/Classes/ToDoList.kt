@@ -31,4 +31,14 @@ class ToDoList {
         this.strategyToDoList.sortTasks()
     }
 
+    fun getTaskIdx(task: Task): Int {
+        for(i in tasks.indices) {
+            val currTask = tasks.get(i)
+            if (currTask.id == task.id) {
+                return i
+            }
+        }
+        return -1
+    }
+
 }
