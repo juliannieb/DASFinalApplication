@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.AdapterView
 import android.widget.ListView
 import com.example.juliannieb.dastodolistproject.Adapters.TasksListAdapter
 import com.example.juliannieb.dastodolistproject.Classes.TaskActivity
@@ -70,5 +71,13 @@ class ToDoListActivity : AppCompatActivity() {
     fun setTasksLists() {
         val taskListAdapter = TasksListAdapter(this, R.layout.item_tasks_list, ToDoList.instance.tasks)
         listViewTasks!!.adapter = taskListAdapter
+
+        listViewTasks!!.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(this, TaskActivity::class.java)
+            intent.putExtra("StateTaskActivity", Utils.StateTaskActivity.STATE_EDIT.ordinal)
+            val task = ToDoList.instance.tasks.get(position)
+            intent.putExtra("task", task.saveMemento())
+            startActivity(intent)
+        }
     }
 }

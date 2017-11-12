@@ -1,9 +1,12 @@
 package com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity
 
 import android.view.View
+import com.example.juliannieb.dastodolistproject.Classes.Priority
 import com.example.juliannieb.dastodolistproject.Classes.Task
 import com.example.juliannieb.dastodolistproject.Classes.TaskActivity
 import com.example.juliannieb.dastodolistproject.Classes.ToDoList
+import com.example.juliannieb.dastodolistproject.R
+import kotlinx.android.synthetic.main.activity_task.view.*
 
 /**
  * Created by juliannieb on 11/12/17.
@@ -20,7 +23,23 @@ class StateCreate: StateTaskActivity {
             if (task.title != null) {
                 taskActivity.editTxtTitle!!.setText(task.title)
             }
-
+            if (task.description != null) {
+                taskActivity.editTxtDescription!!.setText(task.description)
+            }
+            if (task.priority != null) {
+                if (task.priority == Priority.LOW) {
+                    taskActivity.radioGroupPriority!!.check(R.id.btnPriorityLow)
+                }
+                else if (task.priority == Priority.MEDIUM) {
+                    taskActivity.radioGroupPriority!!.check(R.id.btnPriorityMedium)
+                }
+                else if (task.priority == Priority.HIGH) {
+                    taskActivity.radioGroupPriority!!.check(R.id.btnPriorityHigh)
+                }
+            }
+            if (task.intervalTime != null) {
+                taskActivity.editTxtInterval!!.setText(task.intervalTime.toString())
+            }
         }
     }
 
