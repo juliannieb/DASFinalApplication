@@ -34,6 +34,12 @@ class TaskActivity : AppCompatActivity() {
         initGUI()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        setTask()
+        this.state.onBackPressed(task!!)
+    }
+
     fun getIntentExtras() {
         val bundle = intent.extras
         if(bundle != null) {

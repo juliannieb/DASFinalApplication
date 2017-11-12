@@ -13,4 +13,5 @@ interface StateTaskActivity {
 
     fun saveTask(task: Task)
 
+    fun onBackPressed(task: Task)
 }

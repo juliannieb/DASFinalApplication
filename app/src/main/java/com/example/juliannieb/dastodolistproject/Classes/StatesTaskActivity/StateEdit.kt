@@ -47,4 +47,8 @@ class StateEdit: StateTaskActivity {
         ToDoList.instance.sortTasks()
     }
 
+    override fun onBackPressed(task: Task) {
+
+    }
+
 }

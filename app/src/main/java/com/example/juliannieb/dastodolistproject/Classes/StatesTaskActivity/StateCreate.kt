@@ -46,6 +46,11 @@ class StateCreate: StateTaskActivity {
     override fun saveTask(task: Task) {
         ToDoList.instance.addTask(task)
         ToDoList.instance.sortTasks()
+        ToDoList.instance.draft = null
+    }
+
+    override fun onBackPressed(task: Task) {
+        ToDoList.instance.draft = task.saveMemento()
     }
 
 }
