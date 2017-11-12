@@ -7,8 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ListView
 import com.example.juliannieb.dastodolistproject.Adapters.TasksListAdapter
-import com.example.juliannieb.dastodolistproject.Classes.Priority
-import com.example.juliannieb.dastodolistproject.Classes.TaskFactory
 import com.example.juliannieb.dastodolistproject.Classes.ToDoList
 
 class ToDoListActivity : AppCompatActivity() {
