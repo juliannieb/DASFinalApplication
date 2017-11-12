@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ListView
 import com.example.juliannieb.dastodolistproject.Adapters.TasksListAdapter
+import com.example.juliannieb.dastodolistproject.Classes.TaskActivity
 import com.example.juliannieb.dastodolistproject.Classes.ToDoList
 
 class ToDoListActivity : AppCompatActivity() {
@@ -28,6 +29,11 @@ class ToDoListActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
+            R.id.action_add_task -> {
+                val intent = Intent(this, TaskActivity::class.java)
+                startActivity(intent)
+                return true
+            }
             R.id.action_stop_watch -> {
                 val intent = Intent(this, StopWatchActivity::class.java)
                 startActivity(intent)
