@@ -12,6 +12,7 @@ class ToDoList {
     var tasks: ArrayList<Task> = ArrayList<Task>()
     var draft: DataTask? = null
     var strategyToDoList: StrategyToDoList = StrategyPriority()
+    var currId: Long = 0
 
     private constructor() {
 

@@ -57,8 +57,9 @@ class TaskActivity : AppCompatActivity() {
                 task = Task(taskSerializable)
             }
             else {
-                task = TaskFactory().id(0).build()
+                task = TaskFactory().id(ToDoList.instance.currId).build()
                 ToDoList.instance.draft = task!!.saveMemento()
+                ToDoList.instance.sortTasks()
             }
         }
     }
@@ -77,6 +78,13 @@ class TaskActivity : AppCompatActivity() {
         btnSave!!.setOnClickListener(View.OnClickListener {
             saveTask()
             this.finish()
+        })
+        btnDelete!!.setOnClickListener(View.OnClickListener {
+            val idx = ToDoList.instance.getTaskIdx(task!!)
+            if (idx != -1) {
+                ToDoList.instance.tasks.removeAt(idx)
+                this.finish()
+            }
         })
     }
 

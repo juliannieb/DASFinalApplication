@@ -47,6 +47,7 @@ class StateCreate: StateTaskActivity {
         ToDoList.instance.addTask(task)
         ToDoList.instance.sortTasks()
         ToDoList.instance.draft = null
+        ToDoList.instance.currId++
     }
 
     override fun onBackPressed(task: Task) {
