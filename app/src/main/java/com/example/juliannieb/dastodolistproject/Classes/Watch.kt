@@ -104,6 +104,7 @@ open class Watch {
     /**
      * Ticks the watch once and executes a code block after that.
      *
+     * @param callback code block to be executed after the ticking
      */
     open fun <T> tick(callback: () -> T) {
         tickForwards()
