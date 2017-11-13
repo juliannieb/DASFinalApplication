@@ -57,6 +57,7 @@ class ToDoList {
             dataTasksJSON.put(taskJSON)
         }
         editor.putString("tasks", dataTasksJSON.toString())
+        editor.putLong("currId", currId)
         editor.apply()
     }
 
@@ -69,6 +70,8 @@ class ToDoList {
             val task = Task(taskJSONObject)
             tasks.add(task)
         }
+        sortTasks()
+        currId = preferences.getLong("currId", 0)
     }
 
 }
