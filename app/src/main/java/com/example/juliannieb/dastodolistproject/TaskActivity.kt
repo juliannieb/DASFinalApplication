@@ -103,6 +103,7 @@ class TaskActivity : AppCompatActivity() {
         btnComplete!!.setOnClickListener(View.OnClickListener {
             task!!.priority = Priority.COMPLETED
             this.state.saveTask(task!!)
+            ToDoList.instance.save(this)
             this.finish()
         })
     }
