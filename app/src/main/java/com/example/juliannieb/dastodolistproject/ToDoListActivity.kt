@@ -7,12 +7,17 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.AdapterView
 import android.widget.ListView
+import android.widget.RadioGroup
 import com.example.juliannieb.dastodolistproject.Adapters.TasksListAdapter
+import com.example.juliannieb.dastodolistproject.Classes.StrategiesToDoList.StrategyAlphabetically
+import com.example.juliannieb.dastodolistproject.Classes.StrategiesToDoList.StrategyPriority
+import com.example.juliannieb.dastodolistproject.Classes.StrategiesToDoList.StrategyTotalTime
 import com.example.juliannieb.dastodolistproject.Classes.TaskActivity
 import com.example.juliannieb.dastodolistproject.Classes.ToDoList
 
 class ToDoListActivity : AppCompatActivity() {
 
+    var radioGroupSort: RadioGroup? = null
     var listViewTasks: ListView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,10 +67,28 @@ class ToDoListActivity : AppCompatActivity() {
     }
 
     fun getLayoutElements() {
+        radioGroupSort = findViewById<RadioGroup>(R.id.radioGroupSort)
         listViewTasks = findViewById<ListView>(R.id.listViewTasks)
     }
 
     fun setLayoutElements() {
+        radioGroupSort!!.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { radioGroup, i ->
+            if (i == R.id.btnPriority) {
+                ToDoList.instance.strategyToDoList = StrategyPriority()
+                ToDoList.instance.sortTasks()
+                setTasksLists()
+            }
+            else if (i == R.id.btnAlphabetical) {
+                ToDoList.instance.strategyToDoList = StrategyAlphabetically()
+                ToDoList.instance.sortTasks()
+                setTasksLists()
+            }
+            if (i == R.id.btnTotalTime) {
+                ToDoList.instance.strategyToDoList = StrategyTotalTime()
+                ToDoList.instance.sortTasks()
+                setTasksLists()
+            }
+        })
         setTasksLists()
     }
 

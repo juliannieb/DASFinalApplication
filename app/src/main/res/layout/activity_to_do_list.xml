@@ -6,11 +6,47 @@
     android:layout_height="match_parent"
     tools:context="com.example.juliannieb.dastodolistproject.ToDoListActivity">
 
-    <ListView
-        android:id="@+id/listViewTasks"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </ListView>
+        <RadioGroup
+            android:id="@+id/radioGroupSort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:checkedButton="@id/btnPriority">
+
+            <RadioButton android:id="@+id/btnPriority"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Priority"/>
+
+            <RadioButton android:id="@+id/btnAlphabetical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Alphabetical"/>
+
+            <RadioButton android:id="@+id/btnTotalTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total time"/>
+
+        </RadioGroup>
+
+        <ListView
+            android:id="@+id/listViewTasks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
