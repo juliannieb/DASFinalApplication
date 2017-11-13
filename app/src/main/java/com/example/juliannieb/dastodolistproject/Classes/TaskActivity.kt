@@ -83,6 +83,7 @@ class TaskActivity : AppCompatActivity() {
             val idx = ToDoList.instance.getTaskIdx(task!!)
             if (idx != -1) {
                 ToDoList.instance.tasks.removeAt(idx)
+                ToDoList.instance.save(this)
                 this.finish()
             }
         })
@@ -95,6 +96,7 @@ class TaskActivity : AppCompatActivity() {
     fun saveTask() {
         setTask()
         this.state.saveTask(task!!)
+        ToDoList.instance.save(this)
     }
 
     fun setTask() {

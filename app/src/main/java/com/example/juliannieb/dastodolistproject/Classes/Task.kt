@@ -1,5 +1,6 @@
 package com.example.juliannieb.dastodolistproject.Classes
 
+import org.json.JSONObject
 import java.io.Serializable
 
 /**
@@ -60,6 +61,36 @@ class Task {
         this.timeWorkedOn = dataTask.timeWorkedOn
     }
 
+    constructor(jsonObject: JSONObject) {
+        if (jsonObject.getLong("id") != null) {
+            this.id = jsonObject.getLong("id")
+        }
+        if (jsonObject.getString("title") != null) {
+            this.title = jsonObject.getString("title")
+        }
+        if (jsonObject.getString("description") != null) {
+            this.description = jsonObject.getString("description")
+        }
+        if (jsonObject.getInt("priority") != null) {
+            val priority = jsonObject.getInt("priority")
+            if (priority == Priority.LOW.ordinal) {
+                this.priority = Priority.LOW
+            }
+            else if (priority == Priority.MEDIUM.ordinal) {
+                this.priority = Priority.MEDIUM
+            }
+            else if (priority == Priority.HIGH.ordinal) {
+                this.priority = Priority.HIGH
+            }
+        }
+        if (jsonObject.getLong("intervalTime") != null) {
+            this.intervalTime = jsonObject.getLong("intervalTime")
+        }
+        if (jsonObject.getLong("timeWorkedOn") != null) {
+            this.timeWorkedOn = jsonObject.getLong("timeWorkedOn")
+        }
+    }
+
     fun saveMemento(): DataTask {
         return DataTask(this.id, this.title, this.description, this.priority, this.intervalTime, this.timeWorkedOn)
     }
@@ -71,6 +102,17 @@ class Task {
         this.priority = dataTask.priority
         this.intervalTime = dataTask.intervalTime
         this.timeWorkedOn = dataTask.timeWorkedOn
+    }
+
+    fun toJSONObject(): JSONObject {
+        val jsonObject = JSONObject()
+        jsonObject.put("id", id)
+        jsonObject.put("title", title)
+        jsonObject.put("description", description)
+        jsonObject.put("priority", priority.ordinal)
+        jsonObject.put("intervalTime", intervalTime)
+        jsonObject.put("timeWorkedOn", timeWorkedOn)
+        return jsonObject
     }
 
     override fun toString(): String {
