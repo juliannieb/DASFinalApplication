@@ -24,6 +24,10 @@ class Task {
     var timeWorkedOn: Long = 0
     //TODO: add state
 
+    /**
+     * Create a Task object with default values.
+     *
+     */
     constructor() {
         id = 0
         title = ""
@@ -33,6 +37,16 @@ class Task {
         timeWorkedOn = 0
     }
 
+    /**
+     * Create a new Task object.
+     *
+     * @param id id of the Task
+     * @param title ititled of the Task
+     * @param description idescriptiond of the Task
+     * @param priority priority of the Task
+     * @param intervalTime intervalTime of the Task
+     * @param timeWorkedOn timeWorkedOn of the Task
+     */
     constructor(id: Long, title: String, description: String, priority: Priority,
                 intervalTime: Long, timeWorkedOn: Long) {
         this.id = id
@@ -43,6 +57,11 @@ class Task {
         this.timeWorkedOn = timeWorkedOn
     }
 
+    /**
+     * Create a new Task object with a TaskFactory object.
+     *
+     * @param taskFactory TaskFactory that will build the new Task
+     */
     constructor(taskFactory: TaskFactory) {
         this.id = taskFactory.id
         this.title = taskFactory.title
@@ -52,6 +71,11 @@ class Task {
         this.timeWorkedOn = taskFactory.timeWorkedOn
     }
 
+    /**
+     * Create a new Task object with a DataTask object.
+     *
+     * @param dataTask DataTask that will build the new Task
+     */
     constructor(dataTask: DataTask) {
         this.id = dataTask.id
         this.title = dataTask.title
@@ -61,6 +85,11 @@ class Task {
         this.timeWorkedOn = dataTask.timeWorkedOn
     }
 
+    /**
+     * Create a new Task object with a JSONObject object.
+     *
+     * @param jsonObject JSONObject that will build the new Task
+     */
     constructor(jsonObject: JSONObject) {
         if (jsonObject.getLong("id") != null) {
             this.id = jsonObject.getLong("id")
@@ -94,10 +123,20 @@ class Task {
         }
     }
 
+    /**
+     * Save a memento of the current task.
+     *
+     * @return DataTask representing the current Task
+     */
     fun saveMemento(): DataTask {
         return DataTask(this.id, this.title, this.description, this.priority, this.intervalTime, this.timeWorkedOn)
     }
 
+    /**
+     * Set Task values according to a saved memento.
+     *
+     * @param dataTask Saved memento
+     */
     fun restoreFromMemento(dataTask: DataTask) {
         this.id = dataTask.id
         this.title = dataTask.title
@@ -107,6 +146,11 @@ class Task {
         this.timeWorkedOn = dataTask.timeWorkedOn
     }
 
+    /**
+     * Save a JSONObject of the current task.
+     *
+     * @return JSONObject representing the current Task
+     */
     fun toJSONObject(): JSONObject {
         val jsonObject = JSONObject()
         jsonObject.put("id", id)
@@ -118,6 +162,10 @@ class Task {
         return jsonObject
     }
 
+    /**
+     * Overrides toString method of the class.
+     *
+     */
     override fun toString(): String {
         return "${this.id} - ${this.title} - ${this.priority}"
     }

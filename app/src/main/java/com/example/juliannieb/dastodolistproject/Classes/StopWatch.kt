@@ -8,11 +8,27 @@ import android.os.Handler
 
 class StopWatch: Watch {
 
+    /**
+     * Create a StopWatch object with default values.
+     *
+     */
     constructor() : super()
 
+    /**
+     * Create a StopWatch object.
+     *
+     * @param hour Hour of the watch
+     * @param minute Minute of the watch
+     * @param second Second of the watch
+     */
     constructor(hour : Int, minute : Int, second : Int) : super(hour, minute, second)
 
 
+    /**
+     * Override the tick method. Ticks the watch once and executes a code block after that.
+     *
+     * @param callback code block to be executed after the ticking
+     */
     override fun <T> tick(callback: () -> T) {
         if (this.ticking) {
             this.tickForwards()
