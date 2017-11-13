@@ -26,6 +26,7 @@ class TaskActivity : AppCompatActivity() {
     var btnSave: Button? = null
     var btnDelete: Button? = null
     var btnStartTimer: Button? = null
+    var btnComplete: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +76,7 @@ class TaskActivity : AppCompatActivity() {
         btnSave = findViewById<Button>(R.id.btnSave)
         btnDelete = findViewById<Button>(R.id.btnDelete)
         btnStartTimer = findViewById<Button>(R.id.btnStartTimer)
+        btnComplete = findViewById<Button>(R.id.btnComplete)
     }
 
     fun setLayoutElements() {
@@ -97,6 +99,11 @@ class TaskActivity : AppCompatActivity() {
                 this.state.saveTask(task!!)
                 ToDoList.instance.save(this)
             }, task!!.intervalTime)
+        })
+        btnComplete!!.setOnClickListener(View.OnClickListener {
+            task!!.priority = Priority.COMPLETED
+            this.state.saveTask(task!!)
+            this.finish()
         })
     }
 

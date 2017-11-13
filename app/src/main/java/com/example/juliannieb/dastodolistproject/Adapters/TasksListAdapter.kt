@@ -71,7 +71,11 @@ class TasksListAdapter: ArrayAdapter<Task> {
             taskHolder.txtViewTaskTimeWorkedOn!!.text = "Total time: ${task.timeWorkedOn}"
         }
         if (task.priority != null) {
-            if (task.priority == Priority.HIGH) {
+            if (task.priority == Priority.COMPLETED) {
+                taskHolder.txtViewTaskPriority!!.text = "COMPLETED"
+                taskHolder.txtViewTaskPriority!!.setTextColor(context.resources.getColor(R.color.colorPriorityCompleted))
+            }
+            else if (task.priority == Priority.HIGH) {
                 taskHolder.txtViewTaskPriority!!.text = "HIGH"
                 taskHolder.txtViewTaskPriority!!.setTextColor(context.resources.getColor(R.color.colorPriorityHigh))
             }

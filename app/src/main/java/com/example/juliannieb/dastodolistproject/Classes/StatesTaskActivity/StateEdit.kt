@@ -16,6 +16,7 @@ class StateEdit: StateTaskActivity {
         taskActivity.btnSave!!.visibility = View.VISIBLE
         taskActivity.btnDelete!!.visibility = View.VISIBLE
         taskActivity.btnStartTimer!!.visibility = View.VISIBLE
+        taskActivity.btnComplete!!.visibility = View.VISIBLE
 
         if (task != null) {
             if (task.title != null) {

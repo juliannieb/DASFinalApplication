@@ -100,6 +100,15 @@
             android:textColor="@color/white"
             android:layout_marginTop="5dp"/>
 
+        <Button
+            android:id="@+id/btnComplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mark completed"
+            android:background="@color/btnComplete"
+            android:textColor="@color/white"
+            android:layout_marginTop="5dp"/>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

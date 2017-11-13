@@ -17,6 +17,7 @@ class StateCreate: StateTaskActivity {
         taskActivity.btnSave!!.visibility = View.VISIBLE
         taskActivity.btnDelete!!.visibility = View.GONE
         taskActivity.btnStartTimer!!.visibility = View.GONE
+        taskActivity.btnComplete!!.visibility = View.GONE
 
         if (task != null) {
             if (task.title != null) {

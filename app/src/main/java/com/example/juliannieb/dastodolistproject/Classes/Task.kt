@@ -8,7 +8,7 @@ import java.io.Serializable
  */
 
 enum class Priority {
-    HIGH, MEDIUM, LOW
+    COMPLETED, HIGH, MEDIUM, LOW
 }
 
 data class DataTask(val id: Long, val title: String, val description: String, val priority: Priority,
@@ -73,7 +73,10 @@ class Task {
         }
         if (jsonObject.getInt("priority") != null) {
             val priority = jsonObject.getInt("priority")
-            if (priority == Priority.LOW.ordinal) {
+            if (priority == Priority.COMPLETED.ordinal) {
+                this.priority = Priority.COMPLETED
+            }
+            else if (priority == Priority.LOW.ordinal) {
                 this.priority = Priority.LOW
             }
             else if (priority == Priority.MEDIUM.ordinal) {
