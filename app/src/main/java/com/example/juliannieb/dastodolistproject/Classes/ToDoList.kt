@@ -20,24 +20,50 @@ class ToDoList {
     var strategyToDoList: StrategyToDoList = StrategyPriority()
     var currId: Long = 0
 
+    /**
+     * Create a ToDoList object with default values
+     *
+     */
     private constructor() {
 
     }
 
+    /**
+     * Holder that contains the instace of a ToDoList singleton object.
+     *
+     */
     private object Holder {val INSTANCE = ToDoList()}
 
+    /**
+     * Declares a 'static' property called instance for the class.
+     *
+     */
     companion object {
         val instance: ToDoList by lazy { Holder.INSTANCE }
     }
 
+    /**
+     * Add a task to the tasks list.
+     *
+     * @param task Task to be added
+     */
     fun addTask(task: Task) {
         this.tasks.add(task)
     }
 
+    /**
+     * Sort the tasks list according to the selected strategy.
+     *
+     */
     fun sortTasks() {
         this.strategyToDoList.sortTasks()
     }
 
+    /**
+     * Get the index of a task in the list.
+     *
+     * @param task Task to look for
+     */
     fun getTaskIdx(task: Task): Int {
         for(i in tasks.indices) {
             val currTask = tasks.get(i)
@@ -48,6 +74,11 @@ class ToDoList {
         return -1
     }
 
+    /**
+     * Stores all the ToDoList important data in the shared preferences.
+     *
+     * @param context Context for saving
+     */
     fun save(context: Context) {
         val preferences = context.getSharedPreferences("tasks", 0)
         val editor = preferences.edit()
@@ -61,6 +92,11 @@ class ToDoList {
         editor.apply()
     }
 
+    /**
+     * Load stored data of a previous session of the ToDoList.
+     *
+     * @param context Context to load data
+     */
     fun load(context: Context) {
         val preferences = context.getSharedPreferences("tasks", 0)
         var dataTasksString = preferences.getString("tasks", JSONArray().toString())

@@ -11,6 +11,10 @@ open class Watch {
     var minute : Int = 0
     var second : Int = 0
 
+    /**
+     * Create a Watch object with default values.
+     *
+     */
     constructor() {
         this.ticking = false
         this.hour = 0
@@ -18,6 +22,13 @@ open class Watch {
         this.second = 0
     }
 
+    /**
+     * Create a Watch object.
+     *
+     * @param hour Hour of the watch
+     * @param minute Minute of the watch
+     * @param second Second of the watch
+     */
     constructor(hour : Int, minute : Int, second : Int) {
         this.ticking = false
         this.hour = hour
@@ -25,12 +36,23 @@ open class Watch {
         this.second = second
     }
 
+    /**
+     * Set hour, minute and second values of a Watch
+     *
+     * @param hour Hour of the watch
+     * @param minute Minute of the watch
+     * @param second Second of the watch
+     */
     fun setWatch(hour: Int, minute: Int, second: Int) {
         this.hour = hour
         this.minute = minute
         this.second = second
     }
 
+    /**
+     * Add 1 second to the Watch.
+     *
+     */
     fun tickForwards() {
         this.second++
         if (this.second == 60) {
@@ -43,6 +65,10 @@ open class Watch {
         }
     }
 
+    /**
+     * Substract 1 second to the Watch.
+     *
+     */
     fun tickBackwards() {
         if (this.hour == 0 && this.minute == 0 && this.second == 0){
             return
@@ -64,6 +90,10 @@ open class Watch {
         }
     }
 
+    /**
+     * Start ticking the watch once a second.
+     *
+     */
     fun <T> start(callback: () -> T) {
         if (!this.ticking) {
             this.ticking = true
@@ -71,21 +101,37 @@ open class Watch {
         }
     }
 
+    /**
+     * Ticks the watch once and executes a code block after that.
+     *
+     */
     open fun <T> tick(callback: () -> T) {
         tickForwards()
         callback()
     }
 
+    /**
+     * Pauses the Watch ticking.
+     *
+     */
     fun pause() {
         this.ticking = false
     }
 
+    /**
+     * Pauses the Watch ticking and restores its values to the default ones.
+     *
+     */
     fun <T> stop(callback: () -> T) {
         pause()
         setWatch(0, 0, 0)
         callback()
     }
 
+    /**
+     * Overrides toString method of the class.
+     *
+     */
     override fun toString(): String {
         val hourString = if (this.hour >= 10) "${this.hour}" else "0${this.hour}"
         val minuteString = if (this.minute >= 10) "${this.minute}" else "0${this.minute}"
