@@ -16,6 +16,11 @@ class StopWatchActivity : AppCompatActivity() {
     var btnPause: Button? = null
     var btnStop: Button? = null
 
+    /**
+     * Overrides method when the activity is created.
+     *
+     * @param savedInstanceState the saved bundle
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_stop_watch)
@@ -23,6 +28,10 @@ class StopWatchActivity : AppCompatActivity() {
         setElementsListeners()
     }
 
+    /**
+     * Get GUI elements from the layout.
+     *
+     */
     fun getLayoutElements() {
         this.txtViewStopWatch = findViewById<TextView>(R.id.txtViewStopWatch)
         this.btnStart = findViewById<Button>(R.id.btnStart)
@@ -30,6 +39,10 @@ class StopWatchActivity : AppCompatActivity() {
         this.btnStop = findViewById<Button>(R.id.btnStop)
     }
 
+    /**
+     * Set the OnClick listeners for the layout buttons.
+     *
+     */
     fun setElementsListeners() {
         this.btnStart!!.setOnClickListener(View.OnClickListener {
             this.stopWatch.start { this.txtViewStopWatch!!.text = this.stopWatch.toString() }

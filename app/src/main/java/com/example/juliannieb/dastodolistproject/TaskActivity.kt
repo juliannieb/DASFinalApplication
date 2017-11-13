@@ -28,6 +28,11 @@ class TaskActivity : AppCompatActivity() {
     var btnStartTimer: Button? = null
     var btnComplete: Button? = null
 
+    /**
+     * Overrides method when the activity is created.
+     *
+     * @param savedInstanceState the saved bundle
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task)
@@ -37,6 +42,10 @@ class TaskActivity : AppCompatActivity() {
         initGUI()
     }
 
+    /**
+     * Overrides method when the back button is pressed.
+     *
+     */
     override fun onBackPressed() {
         super.onBackPressed()
         handler.removeCallbacksAndMessages(null)
@@ -44,6 +53,10 @@ class TaskActivity : AppCompatActivity() {
         this.state.onBackPressed(task!!)
     }
 
+    /**
+     * Get extra variables from the intent of the activity.
+     *
+     */
     fun getIntentExtras() {
         val bundle = intent.extras
         if(bundle != null) {
@@ -68,6 +81,10 @@ class TaskActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Get GUI elements from the layout.
+     *
+     */
     fun getLayoutElements() {
         editTxtTitle = findViewById<EditText>(R.id.editTxtTitle)
         editTxtDescription = findViewById<EditText>(R.id.editTxtDescription)
@@ -79,6 +96,10 @@ class TaskActivity : AppCompatActivity() {
         btnComplete = findViewById<Button>(R.id.btnComplete)
     }
 
+    /**
+     * Set properties of the GUI elements.
+     *
+     */
     fun setLayoutElements() {
         btnSave!!.setOnClickListener(View.OnClickListener {
             saveTask()
@@ -108,16 +129,28 @@ class TaskActivity : AppCompatActivity() {
         })
     }
 
+    /**
+     * Init the GUI components according to the state of the class.
+     *
+     */
     fun initGUI() {
         this.state.initGUI(this, task)
     }
 
+    /**
+     * Set the task variables and save it to the ToDoList instance.
+     *
+     */
     fun saveTask() {
         setTask()
         this.state.saveTask(task!!)
         ToDoList.instance.save(this)
     }
 
+    /**
+     * Set the task properties according to the values of the Task form.
+     *
+     */
     fun setTask() {
         val title = editTxtTitle!!.text.toString()
         val description = editTxtDescription!!.text.toString()
@@ -140,6 +173,13 @@ class TaskActivity : AppCompatActivity() {
         task!!.intervalTime = interval
     }
 
+    /**
+     * Show a simple alert dialog with one button.
+     *
+     * @param title string representing the title of the alert dialog
+     * @param message string representing the message of the alert dialog
+     * @param buttonText string representing the messaage of the button of the alert dialog
+     */
     fun showSimpleAlert(title: String, message: String, buttonText: String) {
         val simpleAlert = AlertDialog.Builder(this@TaskActivity).create()
         simpleAlert.setTitle(title)
