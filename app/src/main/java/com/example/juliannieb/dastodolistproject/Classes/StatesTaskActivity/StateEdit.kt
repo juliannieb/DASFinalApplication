@@ -3,7 +3,7 @@ package com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity
 import android.view.View
 import com.example.juliannieb.dastodolistproject.Classes.Priority
 import com.example.juliannieb.dastodolistproject.Classes.Task
-import com.example.juliannieb.dastodolistproject.Classes.TaskActivity
+import com.example.juliannieb.dastodolistproject.TaskActivity
 import com.example.juliannieb.dastodolistproject.Classes.ToDoList
 import com.example.juliannieb.dastodolistproject.R
 

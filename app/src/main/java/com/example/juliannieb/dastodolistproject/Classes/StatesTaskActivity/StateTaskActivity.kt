@@ -1,7 +1,7 @@
 package com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity
 
 import com.example.juliannieb.dastodolistproject.Classes.Task
-import com.example.juliannieb.dastodolistproject.Classes.TaskActivity
+import com.example.juliannieb.dastodolistproject.TaskActivity
 
 /**
  * Created by juliannieb on 11/12/17.

@@ -5,14 +5,12 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.AdapterView
 import android.widget.ListView
 import android.widget.RadioGroup
 import com.example.juliannieb.dastodolistproject.Adapters.TasksListAdapter
 import com.example.juliannieb.dastodolistproject.Classes.StrategiesToDoList.StrategyAlphabetically
 import com.example.juliannieb.dastodolistproject.Classes.StrategiesToDoList.StrategyPriority
 import com.example.juliannieb.dastodolistproject.Classes.StrategiesToDoList.StrategyTotalTime
-import com.example.juliannieb.dastodolistproject.Classes.TaskActivity
 import com.example.juliannieb.dastodolistproject.Classes.ToDoList
 
 class ToDoListActivity : AppCompatActivity() {

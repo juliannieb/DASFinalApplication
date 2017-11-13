@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".StopWatchActivity" />
         <activity android:name=".TimerActivity" />
-        <activity android:name=".Classes.TaskActivity"
+        <activity android:name=".TaskActivity"
             android:windowSoftInputMode="adjustPan|adjustResize"></activity>
     </application>
 

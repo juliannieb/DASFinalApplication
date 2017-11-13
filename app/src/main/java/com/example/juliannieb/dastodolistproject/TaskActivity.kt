@@ -1,21 +1,23 @@
-package com.example.juliannieb.dastodolistproject.Classes
+package com.example.juliannieb.dastodolistproject
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
+import com.example.juliannieb.dastodolistproject.Classes.*
 import com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity.StateCreate
 import com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity.StateEdit
 import com.example.juliannieb.dastodolistproject.Classes.StatesTaskActivity.StateTaskActivity
-import com.example.juliannieb.dastodolistproject.R
-import com.example.juliannieb.dastodolistproject.Utils
 
 class TaskActivity : AppCompatActivity() {
 
     var state: StateTaskActivity = StateCreate()
     var task: Task? = null
+    val handler = Handler()
 
     var editTxtTitle: EditText? = null
     var editTxtDescription: EditText? = null
@@ -36,6 +38,7 @@ class TaskActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
+        handler.removeCallbacksAndMessages(null)
         setTask()
         this.state.onBackPressed(task!!)
     }
@@ -87,6 +90,14 @@ class TaskActivity : AppCompatActivity() {
                 this.finish()
             }
         })
+        btnStartTimer!!.setOnClickListener(View.OnClickListener {
+            handler.postDelayed(Runnable {
+                showSimpleAlert("Done", "The interval has finished.", "OK")
+                task!!.timeWorkedOn += task!!.intervalTime
+                this.state.saveTask(task!!)
+                ToDoList.instance.save(this)
+            }, task!!.intervalTime)
+        })
     }
 
     fun initGUI() {
@@ -119,5 +130,18 @@ class TaskActivity : AppCompatActivity() {
         task!!.description = description
         task!!.priority = priority
         task!!.intervalTime = interval
+    }
+
+    fun showSimpleAlert(title: String, message: String, buttonText: String) {
+        val simpleAlert = AlertDialog.Builder(this@TaskActivity).create()
+        simpleAlert.setTitle(title)
+        simpleAlert.setMessage(message)
+
+        simpleAlert.setButton(AlertDialog.BUTTON_POSITIVE, buttonText, {
+            dialogInterface, i ->
+
+        })
+
+        simpleAlert.show()
     }
 }
