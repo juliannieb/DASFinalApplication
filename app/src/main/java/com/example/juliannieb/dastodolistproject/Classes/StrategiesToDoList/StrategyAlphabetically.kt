@@ -8,6 +8,10 @@ import com.example.juliannieb.dastodolistproject.Classes.ToDoList
 
 class StrategyAlphabetically: StrategyToDoList {
 
+    /**
+     * Sort tasks list according to their title.
+     *
+     */
     override fun sortTasks() {
         ToDoList.instance.tasks.sortWith(compareBy({it.title}))
     }

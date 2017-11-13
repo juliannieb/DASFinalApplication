@@ -8,6 +8,10 @@ import com.example.juliannieb.dastodolistproject.Classes.ToDoList
 
 class StrategyPriority: StrategyToDoList {
 
+    /**
+     * Sort tasks list according to their priority.
+     *
+     */
     override fun sortTasks() {
         ToDoList.instance.tasks.sortWith(compareBy({it.priority}))
     }
