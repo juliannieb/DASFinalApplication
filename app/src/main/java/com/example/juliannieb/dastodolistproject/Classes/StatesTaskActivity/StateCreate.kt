@@ -13,6 +13,12 @@ import com.example.juliannieb.dastodolistproject.R
 
 class StateCreate: StateTaskActivity {
 
+    /**
+     * Hide some buttons, fills Task form with current task data.
+     *
+     * @param taskActivity TaskActivity context
+     * @param task current task of the TaskActivity that's being edited
+     */
     override fun initGUI(taskActivity: TaskActivity, task: Task?) {
         taskActivity.btnSave!!.visibility = View.VISIBLE
         taskActivity.btnDelete!!.visibility = View.GONE
@@ -43,6 +49,11 @@ class StateCreate: StateTaskActivity {
         }
     }
 
+    /**
+     * Save a new task in the ToDoList.
+     *
+     * @param task Task to be saved
+     */
     override fun saveTask(task: Task) {
         ToDoList.instance.addTask(task)
         ToDoList.instance.sortTasks()
@@ -50,6 +61,11 @@ class StateCreate: StateTaskActivity {
         ToDoList.instance.currId++
     }
 
+    /**
+     * Save task draft to memento.
+     *
+     * @param task Task to be saved as a memento
+     */
     override fun onBackPressed(task: Task) {
         ToDoList.instance.draft = task.saveMemento()
     }

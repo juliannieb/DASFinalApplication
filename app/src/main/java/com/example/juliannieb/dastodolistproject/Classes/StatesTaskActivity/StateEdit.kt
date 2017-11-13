@@ -12,6 +12,13 @@ import com.example.juliannieb.dastodolistproject.R
  */
 
 class StateEdit: StateTaskActivity {
+
+    /**
+     * Set all buttons visible, fills Task form with current task data.
+     *
+     * @param taskActivity TaskActivity context
+     * @param task current task of the TaskActivity that's being edited
+     */
     override fun initGUI(taskActivity: TaskActivity, task: Task?) {
         taskActivity.btnSave!!.visibility = View.VISIBLE
         taskActivity.btnDelete!!.visibility = View.VISIBLE
@@ -42,12 +49,21 @@ class StateEdit: StateTaskActivity {
         }
     }
 
+    /**
+     * Save changes to existent task in the ToDoList.
+     *
+     * @param task Task to be saved
+     */
     override fun saveTask(task: Task) {
         val idx = ToDoList.instance.getTaskIdx(task)
         ToDoList.instance.tasks.set(idx, task)
         ToDoList.instance.sortTasks()
     }
 
+    /**
+     * Nothing needed here.
+     *
+     */
     override fun onBackPressed(task: Task) {
 
     }
