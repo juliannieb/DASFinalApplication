@@ -7,8 +7,8 @@ import java.io.Serializable
  * Created by juliannieb on 11/7/17.
  */
 
-enum class Priority {
-    COMPLETED, HIGH, MEDIUM, LOW
+enum class Priority() {
+    HIGH, MEDIUM, LOW, COMPLETED
 }
 
 data class DataTask(val id: Long, val title: String, val description: String, val priority: Priority,
