@@ -18,6 +18,11 @@ class ToDoListActivity : AppCompatActivity() {
     var radioGroupSort: RadioGroup? = null
     var listViewTasks: ListView? = null
 
+    /**
+     * Overrides method when the activity is created.
+     *
+     * @param savedInstanceState the saved bundle
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_to_do_list)
@@ -27,16 +32,29 @@ class ToDoListActivity : AppCompatActivity() {
         setLayoutElements()
     }
 
+    /**
+     * Overrides method when the activity is resumed.
+     *
+     */
     override fun onResume() {
         super.onResume()
         setTasksLists()
     }
 
+    /**
+     * Overrides method to create the menu of the activity.
+     *
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_to_do_list_activity, menu)
         return true
     }
 
+    /**
+     * Overrides method when an option of the menu is selected.
+     *
+     * @param item the selected item of the menu
+     */
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId) {
             R.id.action_add_task -> {
@@ -60,15 +78,27 @@ class ToDoListActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * Set properties of the toolbar.
+     *
+     */
     fun setToolbar() {
         supportActionBar!!.title = resources.getString(R.string.app_name)
     }
 
+    /**
+     * Get GUI elements from the layout.
+     *
+     */
     fun getLayoutElements() {
         radioGroupSort = findViewById<RadioGroup>(R.id.radioGroupSort)
         listViewTasks = findViewById<ListView>(R.id.listViewTasks)
     }
 
+    /**
+     * Set properties of the GUI elements.
+     *
+     */
     fun setLayoutElements() {
         radioGroupSort!!.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { radioGroup, i ->
             if (i == R.id.btnPriority) {
@@ -90,6 +120,10 @@ class ToDoListActivity : AppCompatActivity() {
         setTasksLists()
     }
 
+    /**
+     * Set the adapter for the listViewTasks ListView and its listeners.
+     *
+     */
     fun setTasksLists() {
         val taskListAdapter = TasksListAdapter(this, R.layout.item_tasks_list, ToDoList.instance.tasks)
         listViewTasks!!.adapter = taskListAdapter

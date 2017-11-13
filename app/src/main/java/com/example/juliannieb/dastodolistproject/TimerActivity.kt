@@ -21,6 +21,11 @@ class TimerActivity : AppCompatActivity() {
     var btnPause: Button? = null
     var btnStop: Button? = null
 
+    /**
+     * Overrides method when the activity is created.
+     *
+     * @param savedInstanceState the saved bundle
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timer)
@@ -28,11 +33,19 @@ class TimerActivity : AppCompatActivity() {
         setElementsListeners()
     }
 
+    /**
+     * Overrides method when the activity is stoped.
+     *
+     */
     override fun onStop() {
         super.onStop()
         timer.stop {  }
     }
 
+    /**
+     * Get GUI elements from the layout.
+     *
+     */
     fun getLayoutElements() {
         this.editTxtHours = findViewById<EditText>(R.id.editTxtHours)
         this.editTxtMinutes = findViewById<EditText>(R.id.editTxtMinutes)
@@ -43,6 +56,10 @@ class TimerActivity : AppCompatActivity() {
         this.btnStop = findViewById<Button>(R.id.btnStop)
     }
 
+    /**
+     * Set the OnClick listeners for the layout buttons.
+     *
+     */
     fun setElementsListeners() {
         this.btnStart!!.setOnClickListener(View.OnClickListener {
             startTimer()
@@ -55,6 +72,10 @@ class TimerActivity : AppCompatActivity() {
         })
     }
 
+    /**
+     * Set the initial values for the timer and starts ticking it backwards every second.
+     *
+     */
     fun startTimer() {
         if (this.timer.hour != 0 || this.timer.minute != 0 || this.timer.second != 0) {
             timer.start { this.txtViewTimer!!.text = timer.toString() }
@@ -81,6 +102,13 @@ class TimerActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Show a simple alert dialog with one button.
+     *
+     * @param title string representing the title of the alert dialog
+     * @param message string representing the message of the alert dialog
+     * @param buttonText string representing the messaage of the button of the alert dialog
+     */
     fun showSimpleAlert(title: String, message: String, buttonText: String) {
         val simpleAlert = AlertDialog.Builder(this@TimerActivity).create()
         simpleAlert.setTitle(title)
