@@ -22,7 +22,6 @@ class Task {
     var priority: Priority = Priority.LOW
     var intervalTime: Long = 0
     var timeWorkedOn: Long = 0
-    //TODO: add state
 
     /**
      * Create a Task object with default values.
