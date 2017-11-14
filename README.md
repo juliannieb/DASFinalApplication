@@ -6,6 +6,8 @@ This project was developed as an Android application using Kotlin.
 All Kotlin files can be found [here](https://github.com/juliannieb/DASFinalApplication/tree/master/app/src/main/java/com/example/juliannieb/dastodolistproject).
 Layout files can be found [here](https://github.com/juliannieb/DASFinalApplication/tree/master/app/src/main/res/layout).
 
+Video can be found [here](https://youtu.be/283_EVIaUF0)
+
 ## Patterns used
 
 ### MVC
